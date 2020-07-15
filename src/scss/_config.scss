@@ -2,4 +2,21 @@
 $light-color: #f4f4f4;
 $font-stack: Arial, Helvetica, sans-serif;
 $primary-color: #0e6cff;
+// $primary-color: #e0ffff;
 $secondary-color: #ff8700;
+
+// set text color based on background
+@function set-text-color($color) {
+  // check the lightness of the color
+  @if (lightness($color) > 70) {
+    @return #333;
+  }
+  @return #fff;
+}
+
+// mixins - is like a function, but it doesn't return anything
+// set background and text color
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
